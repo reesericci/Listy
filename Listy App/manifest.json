@@ -6,6 +6,9 @@
     "128": "listy.png"
   },
   "permissions": [],
+  "https://creativecommons.org"
+  "https://licensebuttons.net"
+  "http://pearl.org"
   "app": {
     "background": {
       "scripts": ["background.js"]
