@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Listy</title>
+<link rel="shortcut icon" href="" />
+</head>
+ <center>
+  <body>
+    <center><h1>Listy</h1></center>
+    <label>
+      Task Name:
+      <input id="new-task-input" type="text" placeholder="">
+    </label>
+    <button type="button" id="add-task-button">
+      Add Task
+    </button>
+  </form>
+  <ul id="todolist-container">
+  </ul>
+  <script type="text/template" id="list-item-template">
+<li>
+  <label>
+    <input type="checkbox">
+    <!-- TASK_NAME -->
+  </label>
+</li>
+</script>
+<script>
+    var addTaskButton = document.getElementById("add-task-button");
+    var newTaskInput = document.getElementById("new-task-input");
+    var todolistContainer = document.getElementById("todolist-container");
+    var templateElement = document.getElementById("list-item-template");
+    var template = templateElement.innerHTML;
+    addTaskButton.addEventListener('click', function(event) {
+      var taskName = newTaskInput.value;
+      newTaskInput.value = "";
+      var taskHTML = template.replace("<!-- TASK_NAME -->", taskName);
+      todolistContainer.insertAdjacentHTML('afterbegin', taskHTML);
+    });
+  </script>
+   <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Listy</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Reese Armstrong</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+ </body>
+</html>
