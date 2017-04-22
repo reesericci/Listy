@@ -5,7 +5,30 @@
 <link rel="shortcut icon" href="" />
 <script type="text/javascript"
         src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
- </head>
+ <script>
+window['__onGCastApiAvailable'] = function(isAvailable) {
+  if (isAvailable) {
+    initializeCastApi();
+  }
+};
+</script>
+<script> initializeCastApi = function() {
+  cast.framework.CastContext.getInstance().setOptions({
+    receiverApplicationId: applicationId,
+    autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
+  });
+};
+</script>
+    <script>var castSession = cast.framework.CastContext.getInstance().getCurrentSession();</script>
+<script> var mediaInfo = new chrome.cast.media.MediaInfo(currentMediaURL, contentType);
+var request = new chrome.cast.media.LoadRequest(mediaInfo);
+castSession.loadMedia(request).then(
+  function() { console.log('Load succeed'); },
+  function(errorCode) { console.log('Error code: ' + errorCode); }); </script>
+<script> var player = new cast.framework.RemotePlayer();
+  var playerController = new cast.framework.RemotePlayerController(player); </script>
+<button is="google-cast-button"></button>
+</head>
  <center>
   <body>
     <center><h1>Listy</h1></center>
